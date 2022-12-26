@@ -1,0 +1,7 @@
+[postgres]
+host = "db"
+port = 5432
+user = "postgres"
+password = "ratestask"
+dbname = "postgres"
+sslmode = "disable"

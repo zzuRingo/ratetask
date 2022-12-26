@@ -1,0 +1,29 @@
+version: "3.5"
+services:
+  web:
+    image: xeneta_task
+    build:
+      context: .
+      dockerfile: Dockerfile
+    #command:
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    networks:
+      - default
+  db:
+    image: db
+    build:
+      context: ./dbDocker
+      dockerfile: Dockerfile
+    privileged: true
+    networks:
+      - default
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.1.0/24
