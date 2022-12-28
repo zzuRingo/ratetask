@@ -7,10 +7,10 @@ import (
 )
 
 type ratesParam struct {
-	origin 			string
-	destination 	string
-	dateFrom 		string
-	dateTo 			string
+	origin      string
+	destination string
+	dateFrom    string
+	dateTo      string
 }
 
 // bit val when param is complete
@@ -64,7 +64,7 @@ func ProcessRatesParam(param url.Values) *ratesParam {
 			fmt.Printf("k:%s, v:%+v", k, v)
 			return nil
 		}
-		fmt.Println("param k:%s, v:%+v", k, v)
+		fmt.Printf("param k:%s, v:%+v", k, v)
 		if k == "origin" {
 			FlagParamBit(&paramBit, RatesParamOrigin)
 			rParam.origin = v[0]
@@ -95,7 +95,7 @@ func ProcessRatesParam(param url.Values) *ratesParam {
 		}
 	}
 	if paramBit != fullParamBit {
-		fmt.Println("param missed: cur bit%b", paramBit)
+		fmt.Printf("param missed: cur bit%b", paramBit)
 		return nil
 	}
 	if rParam.dateFrom > rParam.dateTo {

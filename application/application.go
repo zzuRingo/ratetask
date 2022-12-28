@@ -8,7 +8,7 @@ import (
 )
 
 type Application struct {
-	router		*gin.Engine
+	router *gin.Engine
 }
 
 var appInstance *Application
@@ -27,7 +27,7 @@ func (a *Application) Run() {
 		c.String(http.StatusOK, "Welcome To Rate Server")
 	})
 
-	a.router.GET("/rates", getRates)
+	a.router.GET("/rates", GetRates)
 	e := a.router.Run(":8080")
 	if e != nil {
 		panic(e)

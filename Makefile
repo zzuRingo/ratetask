@@ -6,4 +6,4 @@ build:
 
 clean:
 	@echo "  >  Cleaning build cache"
-	rm $(GOBIN)$(BINARY_NAME)
+	-rm $(GOBIN)$(BINARY_NAME)
