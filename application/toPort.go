@@ -9,7 +9,7 @@ func isStub(s string) bool {
 	return !onlyCapitals(s)
 }
 
-// return param corresponding ports
+// return param's corresponding ports
 func paramToPortCode(param string) ([]string, error) {
 	// if param is not stub, then assume it as port code
 	if !isStub(param) {
@@ -19,7 +19,7 @@ func paramToPortCode(param string) ([]string, error) {
 	// find stub's corresponding ports in db
 	portCodes, err := GetStubCorrespondingPort(param)
 	if err != nil {
-		fmt.Println("GetStubCorrespondingPort error :%+v", err)
+		fmt.Printf("GetStubCorrespondingPort error :%+v", err)
 	}
 	return portCodes, nil
 }

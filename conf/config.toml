@@ -5,3 +5,6 @@ user = "postgres"
 password = "ratestask"
 dbname = "postgres"
 sslmode = "disable"
+maxOpenConns = 25
+maxIdleConns = 25
+maxLifeTime = 5  #minutes
