@@ -90,6 +90,7 @@ func GetDbInstance() (*sql.DB, error) {
 	return db, nil
 }
 
+// return stub's corresponding port codes list
 func GetStubCorrespondingPort(stub string) ([]string, error) {
 	db, e := GetDbInstance()
 	if e != nil {

@@ -8,7 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func getRates(c *gin.Context) {
+func GetRates(c *gin.Context) {
 	// 1. check param
 	param := ProcessRatesParam(c.Request.URL.Query())
 	if param == nil {

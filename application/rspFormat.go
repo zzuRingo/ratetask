@@ -7,6 +7,7 @@ import (
 	"time"
 )
 
+// rate rsp
 type RateRsp []dailyPrice
 
 type dailyPrice struct {
@@ -14,6 +15,8 @@ type dailyPrice struct {
 	Date  string `json:"date"`
 }
 
+// date is a yyyy-mm-dd time str
+// return yyyy, mm, dd
 func trimDateYmd(date string) (int, int, int) {
 	year, _ := strconv.Atoi(date[0:4])
 	month, _ := strconv.Atoi(date[5:7])
@@ -21,11 +24,13 @@ func trimDateYmd(date string) (int, int, int) {
 	return year, month, day
 }
 
+// trans yyyy-mm-dd time str to time.Time
 func strToDate(str string) time.Time {
 	y, m, d := trimDateYmd(str)
 	return time.Date(y, time.Month(m), d, 0, 0, 0, 0, time.UTC)
 }
 
+// construct dailyPrice
 func buildPriceItem(date string, price sql.NullInt32) dailyPrice {
 	var priceVal *int32 = nil
 	if price.Valid {
@@ -38,6 +43,8 @@ func buildPriceItem(date string, price sql.NullInt32) dailyPrice {
 	}
 }
 
+// trans db query concequenses to RateRsp
+// return serialized RateRsp json string
 func composeRateRsp(cons []priceCons, startDate string) string {
 	if len(cons) == 0 {
 		return "[]"
